@@ -3,7 +3,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var TaskSchema = new Schema({
   name: {
     type: String,
@@ -18,8 +17,9 @@ var TaskSchema = new Schema({
       type: String,
       enum: ['pending', 'ongoing', 'completed']
     }],
-    default: ['pending']
+    default: ['pendingg']
   }
 });
+
 
 module.exports = mongoose.model('Tasks', TaskSchema);
