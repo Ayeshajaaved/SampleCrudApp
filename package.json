@@ -2,9 +2,9 @@
   "name": "todolistapi",
   "version": "1.0.0",
   "description": "Test CRUD application",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon server.js"
   },
   "keywords": [
     "ayesha"
@@ -12,10 +12,14 @@
   "author": "ayesha",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.2.0",
     "nodemon": "^2.0.14"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.1.4",
     "mongoose": "^6.0.12"
   }
