@@ -4,7 +4,8 @@
   "description": "Test CRUD application",
   "main": "server.js",
   "scripts": {
-    "serve": "nodemon server.js"
+    "serve": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "ayesha"
@@ -13,14 +14,21 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.2.0",
+    "mongoose": "^6.0.12",
     "nodemon": "^2.0.14"
   },
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.1.4",
-    "mongoose": "^6.0.12"
-  }
+    "mongodb": "^4.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayeshajaaved/SampleCrudApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ayeshajaaved/SampleCrudApp/issues"
+  },
+  "homepage": "https://github.com/Ayeshajaaved/SampleCrudApp#readme"
 }

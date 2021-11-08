@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { loginValidationSchema } = require("../helpers/login_validation");
-
-var mongoose = require("mongoose"),
-  Task = mongoose.model("Tasks");
+var Task = require("../models/todoListModels");
 
 exports.list_all_tasks = function (req, res) {
   Task.find({}, function (err, task) {
@@ -23,12 +21,8 @@ exports.create_a_task = function (req, res) {
     }
   });
 
-  //console.log("tokenAuthorized", tokenAuthorized);
-
   if (tokenAuthorized) {
     const validationResult = loginValidationSchema.validate(req.body);
-
-    //console.log("validationResult", validationResult);
 
     if (validationResult.error) {
       res

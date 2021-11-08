@@ -1,26 +1,16 @@
-'use strict';
+"use strict";
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require("mongoose");
 
-var TaskSchema = new Schema({
+var TaskSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: 'Kindly enter the name of the task'
+    required: "Kindly enter the name of the task",
   },
-  Created_date: {
-    type: Date,
-    default: Date.now
+  author: {
+    type: String,
+    default: "XYZ",
   },
-  status: {
-    type: [
-      {
-      type: String,
-      enum: ['pending', 'ongoing', 'completed']
-    }
-  ],
-    default: ['pending']
-  }
 });
 
-module.exports = mongoose.model('Tasks', TaskSchema);
+module.exports = mongoose.model("Tasks", TaskSchema);
