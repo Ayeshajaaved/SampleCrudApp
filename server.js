@@ -3,21 +3,19 @@ var express = require("express"),
   port = process.env.PORT || 3000,
   mongoose = require("mongoose");
 
-// mongoose instance connection url connection
-// mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/Tododb");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var { routes } = require("./api/routes/todoListRoutes");
-routes(app); // register the route
+var todoListRoutes = require("./api/routes/todoListRoutes");
+app.use("/tasks", todoListRoutes);
 
 const loginRoutes = require("./api/routes/loginRoutes");
 app.use("/api/login", loginRoutes);
 
 app.listen(port);
-console.log("todo list RESTful API server started on: " + port);
+console.log("Server started on: " + port);
 
 app.use(function (req, res) {
   res.status(404).send({ url: req.originalUrl + " not found" });

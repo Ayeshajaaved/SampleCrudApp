@@ -3,9 +3,12 @@ const { loginValidationSchema } = require("../helpers/login_validation");
 var Task = require("../models/todoListModels");
 
 exports.list_all_tasks = function (req, res) {
-  Task.find({}, function (err, task) {
-    if (err) res.send(err);
-    res.json(task);
+  Task.find({}, function (err) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(res.paginatedRecords);
+    }
   });
 };
 
@@ -34,8 +37,11 @@ exports.create_a_task = function (req, res) {
     } else {
       var new_task = new Task(req.body);
       new_task.save(function (err, task) {
-        if (err) res.send(err);
-        res.json(task);
+        if (err) {
+          res.send(err);
+        } else {
+          res.json(task);
+        }
       });
     }
   }
