@@ -4,21 +4,6 @@ const router = express.Router();
 const todoList = require("../controllers/todoListControllers");
 const taskModel = require("../models/todoListModels");
 
-// console.log(Tasks.length);
-
-function getTokenFromRequestHeaders(req, res, next) {
-  const bearerHeader = req.headers["authorization"];
-
-  if (typeof bearerHeader !== "undefined") {
-    const bearerToken = bearerHeader.split(" ")[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    console.log("token not passed");
-    res.sendStatus(403);
-  }
-}
-
 router.get("/", paginatedRecords(taskModel), todoList.list_all_tasks);
 router.post("/", getTokenFromRequestHeaders, todoList.create_a_task);
 router.get("/:taskId", todoList.read_a_task);
@@ -68,6 +53,19 @@ function paginatedRecords(model) {
       });
     }
   };
+}
+
+function getTokenFromRequestHeaders(req, res, next) {
+  const bearerHeader = req.headers["authorization"];
+
+  if (typeof bearerHeader !== "undefined") {
+    const bearerToken = bearerHeader.split(" ")[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    console.log("token not passed");
+    res.sendStatus(403);
+  }
 }
 
 module.exports = router;
