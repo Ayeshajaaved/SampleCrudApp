@@ -1,8 +1,8 @@
-var express = require("express");
+const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-var mockLoginUser = {
+const mockLoginUser = {
   id: 1,
   username: "ayesha",
   email: "ayesha@gmail.com",

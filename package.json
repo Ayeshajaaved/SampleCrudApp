@@ -1,11 +1,11 @@
 {
   "name": "todolistapi",
   "version": "1.0.0",
-  "description": "Test CRUD application",
-  "main": "server.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "serve": "nodemon server.js",
-    "start": "node server.js"
+    "serve": "nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [
     "ayesha"
