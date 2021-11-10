@@ -1,36 +1,19 @@
-const { loginValidationSchema } = require("../../app/helpers/login_validation");
 const TaskModel = require("../models/task");
 
 exports.list_all_tasks = function (req, res) {
-  TaskModel.find({}, function (err) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(res.paginatedRecords);
-    }
-  });
+  res.json(res.paginatedRecords);
 };
 
 // A token is required to create a new task
 exports.create_a_task = function (req, res) {
-  const validationResult = loginValidationSchema.validate(req.body);
-
-  if (validationResult.error) {
-    res
-      .status(422)
-      .send(
-        "Invalid data - Validation failed. \nMessage: " + validationResult.error
-      );
-  } else {
-    var new_task = new TaskModel(req.body);
-    new_task.save(function (err, task) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(task);
-      }
-    });
-  }
+  var new_task = new TaskModel(req.body);
+  new_task.save(function (err, task) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(task);
+    }
+  });
 };
 
 exports.read_a_task = function (req, res) {

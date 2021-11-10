@@ -1,12 +1,9 @@
+const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
-const mongoose = require("mongoose");
-const router = require("./src/routes");
-//const verifyToken = require("./src/middlewares/auth/verifyToken");
+const router = require("./app/routes");
 
-mongoose.connect("mongodb://localhost/Tododb");
-
+require("./app/configs/config");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", router);
@@ -16,6 +13,3 @@ app.use(function (req, res) {
 
 app.listen(port);
 console.log("Server started on: " + port);
-
-// let listOfTasks = require("./database/db");
-// listOfTasks();
