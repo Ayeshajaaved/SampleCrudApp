@@ -1,10 +1,10 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const TaskSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: "Kindly enter the name of the task",
+    required: true,
   },
   author: {
     type: String,
@@ -13,4 +13,4 @@ const TaskSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Tasks", TaskSchema);
+module.exports = mongoose.model("Tasks", taskSchema);

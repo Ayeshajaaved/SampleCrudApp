@@ -13,9 +13,11 @@ module.exports = function (validator) {
       next();
     } catch (err) {
       console.log(err);
-      if (err.isJoi)
+      if (err.isJoi) {
         return next(createHttpError(422, { message: err.message }));
-      else next(createHttpError(500));
+      } else {
+        next(createHttpError(500));
+      }
     }
   };
 };

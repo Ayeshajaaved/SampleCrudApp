@@ -1,22 +1,4 @@
 const jwt = require("jsonwebtoken");
-
-const mockLoginUser = {
-  id: 1,
-  username: "ayesha",
-  email: "ayesha@gmail.com",
-};
-
-const getToken = (req, res, next) => {
-  jwt.sign({ user: mockLoginUser }, "secretKey", (err, token) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.token = token;
-      next();
-    }
-  });
-};
-
 const verifyToken = (req, res, next) => {
   const bearerHeader = req.headers["authorization"];
 
@@ -35,4 +17,4 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken, getToken };
+module.exports = { verifyToken };

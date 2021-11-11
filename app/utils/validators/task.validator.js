@@ -4,5 +4,4 @@ const taskSchema = Joi.object({
   author: Joi.string(),
 });
 
-// console.log("inside task.validator.js");
 module.exports = taskSchema;

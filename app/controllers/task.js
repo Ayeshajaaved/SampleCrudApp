@@ -1,16 +1,43 @@
+const express = require("express");
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 const TaskModel = require("../models/task");
 
 exports.list_all_tasks = function (req, res) {
-  res.json(res.paginatedRecords);
+  const page = parseInt(req.query.page);
+  const limit = parseInt(req.query.limit);
+  const startIndex = (page - 1) * limit;
+
+  TaskModel.find({})
+    .skip(startIndex)
+    .limit(limit)
+    .exec((err, tasks) => {
+      if (err) {
+        res.status(500);
+      } else {
+        res.status(200).json({
+          tasks: tasks,
+        });
+      }
+    });
 };
 
-// A token is required to create a new task
-exports.create_a_task = function (req, res) {
-  var new_task = new TaskModel(req.body);
+exports.create_a_task = (req, res) => {
+  console.log("1");
+  console.log(req.body);
+
+  const new_task = new TaskModel({
+    name: req.body.name,
+    author: req.body.author,
+  });
+
   new_task.save(function (err, task) {
     if (err) {
+      console.log("error ", err);
       res.send(err);
     } else {
+      console.log("elseee");
       res.json(task);
     }
   });
