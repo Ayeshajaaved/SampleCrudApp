@@ -1,7 +1,3 @@
-const express = require("express");
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 const TaskModel = require("../models/task");
 
 exports.list_all_tasks = function (req, res) {
@@ -24,9 +20,6 @@ exports.list_all_tasks = function (req, res) {
 };
 
 exports.create_a_task = (req, res) => {
-  console.log("1");
-  console.log(req.body);
-
   const new_task = new TaskModel({
     name: req.body.name,
     author: req.body.author,
